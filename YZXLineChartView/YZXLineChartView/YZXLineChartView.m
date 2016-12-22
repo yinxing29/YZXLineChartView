@@ -124,8 +124,8 @@
         NSLog(@"%@",NSStringFromCGSize(scaleValueSize));
         NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
         paragraph.alignment = NSTextAlignmentRight;
-        
-        [scaleValue drawInRect:CGRectMake(0, origin_y - scale_y * i - scaleValueSize.height / 2.0, origin_x, scaleValueSize.height) withAttributes:@{NSFontAttributeName:font,NSStrokeColorAttributeName:self.coordinateColor,NSParagraphStyleAttributeName:paragraph}];
+        //画刻度
+        [scaleValue drawInRect:CGRectMake(0, origin_y - scale_y * i - scaleValueSize.height / 2.0, origin_x, scaleValueSize.height) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:self.coordinateColor,NSParagraphStyleAttributeName:paragraph}];
     }
     
     //添加内容
@@ -138,7 +138,15 @@
         CGContextSetFillColorWithColor(context, weak_self.lineColor.CGColor);
         CGContextAddArc(context, content_x, content_y, 2, 0, 2 * M_PI, 0);
         CGContextDrawPath(context, kCGPathFill);
-        
+        //添加标注
+        NSString *scaleValue = obj;
+        if ([obj floatValue] >= 10000.0) {
+            scaleValue = [NSString stringWithFormat:@"%.2f万",[obj floatValue] / 10000.0];
+        }
+        CGSize scaleValueSize = [scaleValue boundingRectWithSize:CGSizeMake(weak_self.bounds.size.width, weak_self.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin attributes:arrts context:nil].size;
+        //画内容
+        [scaleValue drawInRect:CGRectMake(content_x - scaleValueSize.width / 2.0, content_y - scaleValueSize.height - 2.0, scaleValueSize.width, scaleValueSize.height) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0],NSForegroundColorAttributeName:self.coordinateColor}];
+        //连线
         if (lastPoint.x != 0) {
             CGContextSetStrokeColorWithColor(context, weak_self.lineColor.CGColor);
             CGContextMoveToPoint(context, lastPoint.x, lastPoint.y);
