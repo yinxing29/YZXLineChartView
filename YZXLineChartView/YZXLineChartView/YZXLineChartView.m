@@ -18,7 +18,7 @@
 
 //Y轴终点坐标x,y
 #define Y_X origin_x
-#define Y_Y 60.0
+#define Y_Y 30.0
 
 @implementation YZXLineChartView
 
