@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"折线图";
     self.view.backgroundColor = [UIColor whiteColor];
     self.lineChartView.titleArr = self.titleArr;
     self.lineChartView.contentArr = self.contentArr;
