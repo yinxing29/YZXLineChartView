@@ -157,6 +157,8 @@
         lastPoint.x = content_x;
         lastPoint.y = content_y;
     }];
+    //裁剪超出视图部分
+    self.layer.masksToBounds = YES;
 }
 
 #pragma mark - setter
