@@ -68,6 +68,7 @@
     self.calibrationIntervalValue = 10000.0;
     self.lineColor = [UIColor blackColor];
     self.coordinateColor = [UIColor blackColor];
+    self.annotatinColor = [UIColor blueColor];
     
     NSArray *modelArr = @[@{@"title":@"title1title1title1title1title1title1title1title1title1title1",@"content":@"132000.0"},@{@"title":@"title2",@"content":@"100000.0"},@{@"title":@"title3",@"content":@"60123.0"},@{@"title":@"title4",@"content":@"65000.0"},@{@"title":@"title5",@"content":@"10000.0"}];
     self.modelArr = [DataModel mj_objectArrayWithKeyValuesArray:modelArr];

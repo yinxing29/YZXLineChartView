@@ -20,6 +20,8 @@
  */
 @property (nonatomic, strong) NSArray                    *contentArr;
 
+//可选择设置
+
 /**
  折现颜色
  */
@@ -31,12 +33,12 @@
 @property (nonatomic, strong) UIColor                    *coordinateColor;
 
 /**
- Y轴最大刻度
+ Y轴最大刻度（默认：100）
  */
 @property (nonatomic, assign) CGFloat                    maxScaleValue;
 
 /**
- Y轴刻度间隔值
+ Y轴刻度间隔值（默认：10）
  */
 @property (nonatomic, assign) CGFloat                    calibrationIntervalValue;
 
