@@ -40,4 +40,24 @@
  */
 @property (nonatomic, assign) CGFloat                    calibrationIntervalValue;
 
+/**
+ 注释的字体颜色
+ */
+@property (nonatomic, strong) UIColor                    *annotatinColor;
+
+/**
+ 坐标系内容字体大小(默认为10.0)
+ */
+@property (nonatomic, assign) CGFloat                    coordinateContentFont;
+
+/**
+ 是否隐藏标注
+ */
+@property (nonatomic, assign) BOOL                       hideAnnotation;
+
+/**
+ 注释字体大小(默认为10.0)
+ */
+@property (nonatomic, assign) CGFloat                    annotationTitleFont;
+
 @end

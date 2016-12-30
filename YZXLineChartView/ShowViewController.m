@@ -27,6 +27,14 @@
     self.lineChartView.calibrationIntervalValue = self.calibrationIntervalValue;
     self.lineChartView.lineColor = self.lineColor;
     self.lineChartView.coordinateColor = self.coordinateColor;
+    if (self.coordinateContentFont != 0) {
+        self.lineChartView.coordinateContentFont = self.coordinateContentFont;
+    }
+    if (self.annotationTitleFont != 0) {
+        self.lineChartView.annotationTitleFont = self.annotationTitleFont;
+    }
+    self.lineChartView.hideAnnotation = self.hideAnnotation;
+    self.lineChartView.annotatinColor = self.annotatinColor;
     [self.view addSubview:self.lineChartView];
 }
 

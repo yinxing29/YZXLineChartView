@@ -40,6 +40,16 @@
  */
 @property (nonatomic, assign) CGFloat                    calibrationIntervalValue;
 
+/**
+ 注释的字体颜色
+ */
+@property (nonatomic, strong) UIColor                    *annotatinColor;
+
+@property (weak, nonatomic) IBOutlet UITextField *coordinateContentFont;
+
+@property (weak, nonatomic) IBOutlet UITextField *annotationTitleFont;
+@property (weak, nonatomic) IBOutlet UISwitch *hideAnnotation;
+
 @end
 
 @implementation ViewController
@@ -109,6 +119,11 @@
     showVC.calibrationIntervalValue = self.calibrationIntervalValue;
     showVC.lineColor = self.lineColor;
     showVC.coordinateColor = self.coordinateColor;
+    showVC.annotatinColor = self.annotatinColor;
+    showVC.hideAnnotation = self.hideAnnotation.on;
+    //设置之后坐标系内容字体大小不会根据内容多少而变化
+//    showVC.coordinateContentFont = [self.coordinateContentFont.text floatValue];
+    showVC.annotationTitleFont = [self.annotationTitleFont.text floatValue];
     [self.navigationController pushViewController:showVC animated:YES];
 }
 
@@ -121,8 +136,10 @@
                 [sender setTitle:key forState:UIControlStateNormal];
                 if (sender.tag == 100) {//坐标系颜色
                     weak_self.coordinateColor = ColorDic[key];
-                }else {//折现颜色
+                }else if (sender.tag == 101) {//折现颜色
                     weak_self.lineColor = ColorDic[key];
+                }else {
+                    weak_self.annotatinColor = ColorDic[key];
                 }
             }]];
         }
@@ -131,8 +148,10 @@
         [sender setTitle:@"随机" forState:UIControlStateNormal];
         if (sender.tag == 100) {//坐标系颜色
             weak_self.coordinateColor = ColorDic[@"随机"];
-        }else {//折现颜色
+        }else if (sender.tag == 101) {//折现颜色
             weak_self.lineColor = ColorDic[@"随机"];
+        }else {
+            weak_self.annotatinColor = ColorDic[@"随机"];
         }
     }]];
     [alertC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
